@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>My Quote History</title>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">My Quote History</h2>
+
+    {% if history %}
+    <div class="list-group">
+        {% for item in history %}
+        <div class="list-group-item list-group-item-action flex-column align-items-start mb-3 shadow-sm border rounded">
+            <div class="d-flex w-100 justify-content-between bg-light p-2 rounded-top">
+                <h5 class="mb-1 text-primary">{{ item.date_retrieved }}</h5>
+            </div>
+            <div class="p-3">
+                <p class="mb-1 fst-italic">"{{ item.quote_text }}"</p>
+                <small class="text-muted">- {{ item.author }}</small>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center">
+        You don't have any saved quotes yet.
+    </div>
+    {% endif %}
+
+    <div class="text-center mt-4">
+        <a href="{{ url_for('home') }}" class="btn btn-primary">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

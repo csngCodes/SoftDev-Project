@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Welcome</title>
+</head>
+<body>
+    <div>
+        <h1>Welcome to the SoftDev Project!</h1>
+
+        <form action="{{url_for('login')}}" method="POST">
+            {% if error %}
+                <div>{{error}}</div>
+            {% endif %}
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+
+            <input type="submit" value="Log in" class="btn btn-login">
+        </form>
+
+        <h3>Or you can sign-up here:</h3>
+        <a href="{{url_for('register')}}">Sign-up</a>
+    </div>
+</body>
+</html>
