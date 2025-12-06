@@ -3,6 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import requests
 from datetime import date
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 app = Flask(__name__)
 
@@ -13,8 +16,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Secret key for werkzeug security
-# Make sure secret key is not directly in the code - will fix it later
-app.secret_key = "Io9fnfTpoj5htPwgJUwUyqb7OkoriTBpTIncYS60xET8adVulV"
+# Make sure secret key is not directly in the code
+app.secret_key = os.getenv('SECRET_KEY',os.urandom(24))
 
 # User database model
 class User(db.Model):
