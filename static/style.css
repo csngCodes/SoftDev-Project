@@ -51,7 +51,7 @@ body {
     overflow: hidden;
 }
 
-body > div:not(.navbar):not(.container-fluid):not(.container) {
+main, body > div.content-box {
     max-width: 450px;
     margin: 80px auto;
     padding: 40px;
